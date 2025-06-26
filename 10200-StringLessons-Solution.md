@@ -55,12 +55,11 @@ Here's how we'd do it in Python:
 
 Proposed solution here:
 ```sql
-SELECT 
+SELECT
     name,
     UPPER(origin) as origin_upper,
-    INITCAP(SUBSTR(name, 1, INSTR(name || ' ', ' ') - 1)) as maker_title
-FROM mpg
-LIMIT 5;
+    UPPER(SUBSTR(name, 1, 1)) || UPPER(SUBSTR(name, 2, INSTR(name || ' ', ' ') - 2)) as maker_title
+FROM mpg limit 5;
 ```
 
 ### 3. Pattern Matching with LIKE
