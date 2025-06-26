@@ -52,7 +52,14 @@ After setting up your environment, you can start exploring the data:
 sqlite3 sandbox.db
 ```
 
-2. Once in SQLite, you can see available tables:
+Note: If you encounter an error at this `sqlite3 sandbox.db` step consider the following checks and solutions:
+
+- Ensure you've installed the necessary tools and environments. We recommend Anaconda's distrution of Python which should include all necessary tools.
+- A second option, especially if you've already instealled Anaconda is to install or update to the most recent versions of SQLite [available here](https://www.sqlite.org/download.html).
+- Look to install the the "Precompiled Binaries" for your computer and OS. The filename will resemble: `sqlite-tools-win-x64-3500100.zip`.
+- Also, if on a Windows PC, consider adding `C:\sqlite\sqlitetools` (or the equivalent for your setup to your System Path. A computer restart may also be necessary.
+
+3. Once in SQLite, you can see available tables:
 ```sql
 .tables
 ```
