@@ -8,6 +8,7 @@ import sqlite3
 import seaborn as sns
 import pandas as pd
 import sys
+datasets = ['mpg', 'tips', 'penguins']
 
 def get_user_confirmation(prompt):
     """Ask user for yes/no confirmation."""
@@ -35,33 +36,15 @@ def create_database():
     conn = sqlite3.connect('sandbox.db')
     
     try:
-        # Load MPG data
-        try:
-            print("\nLoading MPG dataset...")
-            mpg_data = sns.load_dataset('mpg')
-            mpg_data.to_sql('mpg', conn, index=False)
-            print(f"✅ Successfully loaded MPG dataset with {len(mpg_data)} rows")
-        except Exception as e:
-            print(f"❌ Error loading MPG dataset: {str(e)}")
-        
-        # Load tips data
-        try:
-            print("\nLoading tips dataset...")
-            tips_data = sns.load_dataset('tips')
-            tips_data.to_sql('tips', conn, index=False)
-            print(f"✅ Successfully loaded tips dataset with {len(tips_data)} rows")
-        except Exception as e:
-            print(f"❌ Error loading tips dataset: {str(e)}")
-        
-        # Load penguins data
-        try:
-            print("\nLoading penguins dataset...")
-            penguins_data = sns.load_dataset('penguins')
-            penguins_data = penguins_data.dropna()  # Remove rows with missing values
-            penguins_data.to_sql('penguins', conn, index=False)
-            print(f"✅ Successfully loaded penguins dataset with {len(penguins_data)} rows")
-        except Exception as e:
-            print(f"❌ Error loading penguins dataset: {str(e)}")
+        # Load datasets
+        for d in datasets:
+            try:
+                print(f"\nLoading {d} dataset...")
+                data = sns.load_dataset(d)
+                data.to_sql(d, conn, index=False)
+                print(f"✅ Successfully loaded {d} dataset with {len(data)} rows")
+            except Exception as e:
+                print(f"❌ Error loading {d} dataset: {str(e)}")
 
         # Load bank complaints
         try:
@@ -69,7 +52,7 @@ def create_database():
             url = 'https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/complaints-bank.csv'
             bankcomplaints_data = pd.read_csv(url,index_col=0)
             bankcomplaints_data = bankcomplaints_data.dropna()  # Remove rows with missing values
-            bankcomplaints_data.to_sql('bank_complaints', conn, index=False) # transfer to sql?
+            bankcomplaints_data.to_sql('bank_complaints', conn, index=False) 
             print(f"✅ Successfully loaded bank complaints dataset with {len(bankcomplaints_data)} rows")
         except Exception as e:
             print(f"❌ Error loading bank complaints dataset: {str(e)}")
