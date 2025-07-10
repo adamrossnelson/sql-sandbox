@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Refactors the build-sandbox.py that accepts custom CSV imports (BankComplaints.csv)
+Creates and populates SQLite database with example datasets from Seaborn and a Bank Complaints csv file from the Confident Data Science Repository. Downloads 
+mpg, tips, and penguins, and the bank_complaints.csv datasets and creates corresponding tables in the sandbox.db.
 """
 
 import os
@@ -8,6 +9,8 @@ import sqlite3
 import seaborn as sns
 import pandas as pd
 import sys
+
+# Defines Seaborn datasets
 datasets = ['mpg', 'tips', 'penguins']
 
 def get_user_confirmation(prompt):
@@ -21,7 +24,7 @@ def get_user_confirmation(prompt):
         print("Please answer 'yes' or 'no'")
 
 def create_database():
-    """Create a new SQLite database and populate it with Bank Complaints Dataset"""
+    """Create a new SQLite database and populate it with Seaborn and Bank Complaints Dataset"""
     
     # Check if database exists and get confirmation before deleting
     if os.path.exists('sandbox.db'):
