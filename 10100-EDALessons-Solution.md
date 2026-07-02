@@ -56,8 +56,7 @@ SELECT
     origin,
     ROUND(AVG(weight), 2) as avg_weight,
     ROUND(AVG(horsepower), 2) as avg_horsepower,
-    ROUND(AVG(mpg), 2) as avg_mpg,
-    COUNT(*) as number_of_vehicles
+    ROUND(AVG(mpg), 2) as avg_mpg
 FROM mpg
 GROUP BY origin
 ORDER BY avg_mpg DESC;
@@ -94,8 +93,7 @@ SELECT
     model_year,
     ROUND(AVG(weight), 2) as avg_weight,
     ROUND(AVG(horsepower), 2) as avg_horsepower,
-    ROUND(AVG(mpg), 2) as avg_mpg,
-    COUNT(*) as number_of_vehicles
+    ROUND(AVG(mpg), 2) as avg_mpg
 FROM mpg
 GROUP BY model_year
 ORDER BY model_year;
@@ -139,8 +137,7 @@ SELECT
     origin,
     ROUND(AVG(weight), 2) as avg_weight,
     ROUND(AVG(horsepower), 2) as avg_horsepower,
-    ROUND(AVG(mpg), 2) as avg_mpg,
-    COUNT(*) as number_of_vehicles
+    ROUND(AVG(mpg), 2) as avg_mpg
 FROM mpg
 GROUP BY model_year, origin
 ORDER BY model_year, origin;
@@ -206,8 +203,7 @@ Proposed solution here:
 SELECT 
     species,
     SUM(CASE WHEN sex = 'Male' THEN 1 ELSE 0 END) as male_count,
-    SUM(CASE WHEN sex = 'Female' THEN 1 ELSE 0 END) as female_count,
-    COUNT(*) as total_count
+    SUM(CASE WHEN sex = 'Female' THEN 1 ELSE 0 END) as female_count
 FROM penguins
 GROUP BY species
 ORDER BY species;
@@ -233,8 +229,7 @@ Proposed solution here:
 SELECT 
     island,
     SUM(CASE WHEN sex = 'Male' THEN 1 ELSE 0 END) as male_count,
-    SUM(CASE WHEN sex = 'Female' THEN 1 ELSE 0 END) as female_count,
-    COUNT(*) as total_count
+    SUM(CASE WHEN sex = 'Female' THEN 1 ELSE 0 END) as female_count
 FROM penguins
 GROUP BY island
 ORDER BY island;
@@ -263,8 +258,7 @@ SELECT
     species,
     island,
     SUM(CASE WHEN sex = 'Male' THEN 1 ELSE 0 END) as male_count,
-    SUM(CASE WHEN sex = 'Female' THEN 1 ELSE 0 END) as female_count,
-    COUNT(*) as total_count
+    SUM(CASE WHEN sex = 'Female' THEN 1 ELSE 0 END) as female_count
 FROM penguins
 GROUP BY species, island
 ORDER BY species, island;
